@@ -37,9 +37,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Make sure elements exist
     if (line1 && line2 && line3) {
-        setupIntersectionObserver(line1, true, 0.10);
-        setupIntersectionObserver(line2, false, 0.15);
-        setupIntersectionObserver(line3, true, 0.10);
+        setupIntersectionObserver(line1, true, 0.30);
+        setupIntersectionObserver(line2, false, 0.25);
+        setupIntersectionObserver(line3, true, 0.30);
     } else {
         console.error("One or more elements not found.");
     }
