@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        @keyframes swing {
+
+            0%,
+            100% {
+                transform: rotate(-1deg);
+            }
+
+            50% {
+                transform: rotate(3deg);
+            }
+        }
+
+        .swing {
+            animation: swing 3s ease-in-out infinite;
+            transform-origin: top center;
+        }
+
+        .swing-delay {
+            animation-delay: 1.5s;
+        }
+
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 15s linear infinite;
+        }
+
+        .stroke-black {
+            -webkit-text-stroke: 1px black;
+            color: white;
+        }
+    </style>
+
+
+    <title>United Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/29b57c2806.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="overflow-x-hidden">
+    <header class="bg-[#FDF9EA] text-black w-full px-6 py-4 flex items-center justify-between">
+        <!-- Left: Logo -->
+        <div class="flex-shrink-0">
+            <img src="img/LOGO.png" alt="Logo" class="w-14 md:w-20 lg:w-60%" />
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="hidden peer" />
+        <label for="menu-toggle" class="md:hidden block cursor-pointer z-50">
+            <i class="fa-sharp-duotone fa-solid fa-bars text-stone-600 text-lg"></i>
+        </label>
+
+        <!-- Mobile Menu -->
+        <nav
+            class="hidden peer-checked:flex md:flex flex-col md:flex-row gap-4 md:gap-6 bg-[#FDF9EA] md:bg-transparent absolute md:static top-[85px] left-0 w-full md:w-auto p-6 md:p-0 shadow-md md:shadow-none z-40">
+            <a href="#"
+                class="text-lg text-Stone-800 hover:text-yellow-800 transition font-semibold border-b-none hover:border-b hover:border-yellow-800 transition">Home</a>
+            <a href="#"
+                class="flex items-center gap-2 text-lg text-Stone-800 hover:text-yellow-800 transition font-semibold border-b-none hover:border-b hover:border-yellow-800 transition">
+                <span>Shop</span>
+                <i class="fa-solid fa-chevron-up transition-transform duration-300 rotate-180"></i>
+            </a>
+            <a href="#"
+                class="flex items-center gap-2 text-lg text-Stone-800 hover:text-yellow-800 transition font-semibold border-b-none hover:border-b hover:border-yellow-800 transition">
+                <span> Collections</span>
+                <i class="fa-solid fa-chevron-up transition-transform duration-300 rotate-180"></i>
+
+            </a>
+            <a href="#"
+                class="text-lg text-Stone-800 hover:text-yellow-800 font-semibold border-b-none hover:border-b hover:border-yellow-800 transition">Blog</a>
+            <a href="#"
+                class="text-lg text-Stone-800 hover:text-yellow-800 font-semibold border-b-none hover:border-b hover:border-yellow-800 transition">Contact
+            </a>
+
+            <!-- Icons -->
+            <div class="flex space-x-3 pt-4 md:pt-0 md:hidden">
+                <button class="bg-[#6C4A1C] p-2 rounded-full text-white">
+                    <img src="img/famicons_search-outline.png" alt="">
+                </button>
+                <button class="bg-[#6C4A1C] p-2 rounded-full text-white">
+                    <img src="img/ant-design_shopping-outlined.png" alt="">
+                </button>
+                <button class="bg-[#6C4A1C] p-2 rounded-full text-white">
+                    <img src="img/user-outlined.png" alt="">
+                </button>
+                <button class="bg-[#6C4A1C] p-2 rounded-full text-white">
+                    <img src="img/solar_heart-outline.png" alt="">
+                </button>
+            </div>
+        </nav>
+
+
+        <!-- Right: Action Icons -->
+        <div class="hidden md:flex items-center space-x-3">
+            <!-- Search -->
+            <button class="bg-[#6C4A1C] p-2 rounded-full text-white hover:scale-105 transition">
+                <img src="img/famicons_search-outline.png" alt="">
+            </button>
+            <!-- Cart with badge -->
+            <div class="relative">
+                <button class="bg-[#6C4A1C] p-2 rounded-full text-white hover:scale-105 transition">
+                    <img src="img/ant-design_shopping-outlined.png" alt="">
+                </button>
+                <span
+                    class="absolute -top-1 -right-1 text-xs bg-red-600 w-5 h-5 flex items-center justify-center text-white rounded-full">
+                    5
+                </span>
+            </div>
+            <!-- User -->
+            <button class="bg-[#6C4A1C] p-2 rounded-full text-white hover:scale-105 transition">
+                <img src="img/user-outlined.png" alt="">
+            </button>
+            <!-- Wishlist -->
+            <button class="bg-[#6C4A1C] p-2 rounded-full text-white hover:scale-105 transition">
+                <img src="img/solar_heart-outline.png" alt="">
+            </button>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative w-full bg-[#FDF9EA] overflow-hidden py-20 md:py-32">
+            <div
+                class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 px-6 md:px-12 max-w-7xl mx-auto items-center">
+
+                <!-- LEFT: Headline & CTA -->
+                <div class="space-y-6 max-w-xl">
+                    <h1 class="text-[#5C3A00] text-4xl md:text-6xl font-bold leading-tight">
+                        The Essence of Luxury,<br />
+                        Delivered to Your Doorstep.
+                    </h1>
+                    <p class="text-gray-500 text-base md:text-lg">
+                        Experience premium, 100% authentic perfumes sourced from Dubai — now available across the UK.
+                    </p>
+                    <a href="#"
+                        class="inline-block bg-[#5C3A00] text-white px-6 py-3 rounded-md text-sm font-semibold hover:bg-yellow-800 transition">
+                        Shop Best Sellers →
+                    </a>
+                </div>
+
+                <!-- RIGHT: Product Visuals -->
+                <div class="relative w-full h-[300px] md:h-[500px] flex items-center justify-center">
+                    <!-- Arch / Decorative Ring -->
+                    <img src="img/Pattern.png" alt="Arch Pattern"
+                        class="absolute w-[300px] top-[10px] right-0 md:w-[600px] md:top-[200px] md:right-[-50px] pointer-events-none" />
+
+                    <!-- Product Image -->
+                    <img src="img/image 1 (1).png" alt="Product"
+                        class="absolute z-10 w-[120px] top-[70px] left-[50px] md:w-[200px] md:top-[340px] md:left-[200px] " />
+                </div>
+            </div>
+
+            <!-- Background Wave -->
+            <img src="img/BG Waves.png" alt="Waves"
+                class="absolute w-full z-0 pointer-events-none top-[620px] md:top-[500px]" />
+        </section>
+        <!-- Offer Section -->
+        <section class="bg-[#FDF1C2] p-8 relative -top-[170px] md:-top-[40px]">
+            <div
+                class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
+
+                <!-- Item 1 -->
+                <div class="flex items-center gap-4">
+                    <img src="img/gift-svg 1.png" alt="Offer"
+                        class="w-12 h-12 p-2 border-2 border-dotted border-[#5C3A00] rounded-full" />
+                    <div>
+                        <h3 class="text-lg font-semibold text-[#5C3A00]">Up To 40% Offer</h3>
+                        <p class="text-sm text-gray-700">On all your perfume orders</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="flex items-center gap-4">
+                    <img src="img/perfume 1.png" alt="Variety"
+                        class="w-12 h-12 p-2 border-2 border-dotted border-[#5C3A00] rounded-full" />
+                    <div>
+                        <h3 class="text-lg font-semibold text-[#5C3A00]">Perfume Variety</h3>
+                        <p class="text-sm text-gray-700">Making your gift box by yourself</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="flex items-center gap-4">
+                    <img src="img/shipping 1.png" alt="Shipping"
+                        class="w-12 h-12 p-2 border-2 border-dotted border-[#5C3A00] rounded-full" />
+                    <div>
+                        <h3 class="text-lg font-semibold text-[#5C3A00]">Free Shipping</h3>
+                        <p class="text-sm text-gray-700">On orders from £500 and above</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="flex items-center gap-4">
+                    <img src="img/return 1.png" alt="Returns"
+                        class="w-12 h-12 p-2 border-2 border-dotted border-[#5C3A00] rounded-full" />
+                    <div>
+                        <h3 class="text-lg font-semibold text-[#5C3A00]">Easy Returns</h3>
+                        <p class="text-sm text-gray-700">Simply return it within 30 days</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SHOP BY CATEGORIES -->
+        <section class="relative w-full bg-white overflow-hidden pt-14 px-6 md:px-12 -top-[170px] md:-top-[40px]">
+
+            <div class="absolute inset-0 z-0">
+                <img src="img/image 16 (1).png" alt="Background Swirl"
+                    class="w-full h-full object-cover pointer-events-none opacity-70" />
+            </div>
+
+            <!-- Foreground Content (Z-10 for stacking above BG) -->
+            <div class="relative z-10 max-w-7xl mx-auto text-center">
+
+                <div class="mb-12">
+                    <p class="uppercase text-sm tracking-widest text-[#5C3A00] font-semibold">Shop by Categories</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#5C3A00]">Perfumes Collections</h2>
+                </div>
+
+                <!-- Category Circles Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 justify-around">
+                    <!-- 1 -->
+                    <div class="flex flex-col items-center group">
+                        <a href="#" class="block">
+                            <img src="img/Men.png" alt="Men's Perfume"
+                                class="w-32 h-32 rounded-full object-cover shadow-lg transform transition duration-500 group-hover:scale-105 group-hover:-translate-y-1 group-hover:ring-4 group-hover:ring-[#5C3A00]/30" />
+                        </a>
+                    </div>
+
+
+                    <!-- 2 -->
+                    <div class="flex flex-col items-center group">
+                        <a href="#" class="block">
+                            <img src="img/Women.png" alt="Men's Perfume"
+                                class="w-32 h-32 rounded-full object-cover shadow-lg transform transition duration-500 group-hover:scale-105 group-hover:-translate-y-1 group-hover:ring-4 group-hover:ring-[#5C3A00]/30" />
+                        </a>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="flex flex-col items-center group">
+                        <a href="#" class="block">
+                            <img src="img/Unisex.png" alt="Men's Perfume"
+                                class="w-32 h-32 rounded-full object-cover shadow-lg transform transition duration-500 group-hover:scale-105 group-hover:-translate-y-1 group-hover:ring-4 group-hover:ring-[#5C3A00]/30" />
+                        </a>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="flex flex-col items-center group">
+                        <a href="#" class="block">
+                            <img src="img/Kids.png" alt="Men's Perfume"
+                                class="w-32 h-32 rounded-full object-cover shadow-lg transform transition duration-500 group-hover:scale-105 group-hover:-translate-y-1 group-hover:ring-4 group-hover:ring-[#5C3A00]/30" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- kanjar -->
+        <section class="w-full bg-[#FDF9EA] relative overflow-hidden px-6 md:pl-12 pt-20 pb-10">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-6 gap-6 items-center">
+
+                <!-- LEFT: 40% Text + 2 Decorative Images -->
+                <div class="relative md:col-span-3 space-y-4 md:pl-[100px]">
+                    <!-- Decorative Top Left Flower -->
+                    <img src="img/image 20.png" alt="Flower"
+                        class="absolute -top-[80px] -left-[15px] w-20 md:w-28 pointer-events-none z-0 swing" />
+                    <img src="img/image 21.png" alt="Flower"
+                        class="absolute -top-[100px] -left-5 w-20 md:w-28 pointer-events-none z-0 swing" />
+
+                    <!-- Logo Bottom Left -->
+                    <img src="img/image 19 (1).png" alt="Khanjar Logo"
+                        class="absolute bottom-0 right-0 w-24 md:w-32 pointer-events-none z-0 md:-left-[35px]" />
+
+                    <!-- Content -->
+                    <h2 class="text-3xl md:text-5xl font-bold text-[#1D1D1D] z-10 relative">A Fragrance as Sharp as
+                        Tradition.</h2>
+                    <p class="text-gray-600 text-base md:text-lg z-10 relative">
+                        Inspired by the iconic Omani dagger, <em>Khanjar</em> is more than a fragrance — it's a symbol
+                        of power,
+                        masculinity, and refined taste. Handpicked oud and oriental spices deliver a scent as deep and
+                        unforgettable
+                        as the stories that shaped it.
+                    </p>
+                    <a href="#"
+                        class="inline-block bg-[#5C3A00] text-white px-6 py-3 rounded-md text-sm font-semibold hover:bg-yellow-800 transition z-10 relative">
+                        Buy Now →
+                    </a>
+                </div>
+
+                <!-- RIGHT: 60% Image with Top Badge -->
+                <div class="relative md:col-span-3 flex items-center justify-center">
+                    <!-- Badge / Mark -->
+                    <img src="img/image 19.png" alt="Mark" class="absolute top-0 right-0 w-16 md:w-20 z-20" />
+
+                    <!-- Main Product Image -->
+                    <img src="img/image 17.png" alt="Khanjar Product" class="w-70 md:w-[750px] relative z-10" />
+
+
+                </div>
+            </div>
+        </section>
+        <!-- New Arrivals -->
+        <section class="w-full bg-[#FDF9EA] px-8 md:px-16 md:gap-2 py-16">
+            <!-- Top Row -->
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mb-10 gap-4">
+                <div>
+                    <p class="text-sm tracking-widest text-[#5C3A00] uppercase">New Arrivals</p>
+                    <h2 class="text-2xl md:text-4xl font-bold text-[#1D1D1D]">Explore Our Latest Fragrances</h2>
+                </div>
+                <a href="#"
+                    class="px-6 py-2 bg-[#5C3A00] text-white rounded-md text-sm font-semibold hover:bg-yellow-800 transition">
+                    View All →
+                </a>
+            </div>
+            <hr class="w-full md:w-[1200px] mx-auto border-t border-[#5C3A00] my-8 " />
+
+            <!-- Bottom Product Grid -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 items-start relative">
+
+                <!-- Big Featured Product -->
+                <div class="relative group overflow-hidden rounded-xl h-full">
+                    <img src="img/image 22.png" alt="Featured"
+                        class="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105" />
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-center items-center text-center p-6">
+                        <p class="text-white text-lg mb-2">The latest</p>
+                        <h3 class="text-white text-2xl font-bold mb-4">Fragrances</h3>
+                        <a href="#"
+                            class="px-5 py-2 bg-white text-[#5C3A00] font-semibold rounded-md hover:bg-yellow-100 transition">
+                            Buy Now →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 1 -->
+                <div
+                    class="bg-[#FDFAF0] rounded-xl p-4 flex flex-col items-center text-center space-y-3 shadow-sm relative border border-transparent hover:border-[#3F2C14] transition-all duration-300">
+                    <img src="img/image 23.png" alt="Lattafa Eclaire" class="h-40 object-contain" />
+                    <img src="img/image 24.png" alt="Lattafa Al Jawhara"
+                        class="h-10 absolute top-[140px] left-[45px]" />
+                    <img src="img/image 25.png" alt="Lattafa Al Jawhara"
+                        class="h-10 absolute top-[140px] right-[45px]" />
+                    <h3 class="text-md font-bold text-[#1D1D1D]">Lattafa Eclaire</h3>
+                    <p class="text-[#5C3A00] font-semibold">£69.99</p>
+                    <a href="#"
+                        class="px-4 py-2 bg-[#5C3A00] text-white rounded-md text-sm font-semibold hover:bg-yellow-800 transition">
+                        Buy Now →
+                    </a>
+                    <span
+                        class="absolute top-0 left-0 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-br-md">SALE</span>
+                    <span class="absolute top-2 right-2 text-xl"><img src="img/Like BTN.png" alt=""></span>
+                </div>
+
+                <!-- Product 2 -->
+                <div
+                    class="bg-[#FDFAF0] rounded-xl p-4 flex flex-col items-center text-center space-y-3 shadow-sm relative border border-transparent hover:border-[#3F2C14] transition-all duration-300">
+                    <img src="img/image 26.png" alt="Lattafa Al Jawhara" class="h-40 object-contain" />
+                    <img src="img/Group 4.png" alt="Lattafa Al Jawhara" class="h-10 absolute top-[140px] left-[45px]" />
+
+                    <h3 class="text-md font-bold text-[#1D1D1D]">Lattafa Al Jawhara Niche Emarati</h3>
+                    <p class="text-[#5C3A00] font-semibold">£69.99</p>
+                    <a href="#"
+                        class="px-4 py-2 bg-[#5C3A00] text-white rounded-md text-sm font-semibold hover:bg-yellow-800 transition">
+                        Buy Now →
+                    </a>
+                    <span class="absolute top-2 right-2 text-xl"><img src="img/Like BTN.png" alt=""></span>
+
+                </div>
+
+                <!-- Product 3 -->
+                <div
+                    class="bg-[#FDFAF0] rounded-xl p-4 flex flex-col items-center text-center space-y-3 shadow-sm relative border border-transparent hover:border-[#3F2C14] transition-all duration-300">
+                    <img src="img/image 27.png" alt="Lattafa Ajwad" class="h-40 object-contain" />
+                    <h3 class="text-md font-bold text-[#1D1D1D]">Lattafa Ajwad</h3>
+                    <div class="space-x-2">
+                        <span class="line-through text-gray-400 text-sm">£32.99</span>
+                        <span class="text-[#5C3A00] font-semibold">£27.99</span>
+                    </div>
+                    <a href="#"
+                        class="px-4 py-2 bg-[#5C3A00] text-white rounded-md text-sm font-semibold hover:bg-yellow-800 transition">
+                        Buy Now →
+                    </a>
+                    <span class="absolute top-2 right-2 text-xl">
+                        <img src="img/Like BTN.png" alt="">
+                    </span>
+                </div>
+                <!-- Arrows Navigation -->
+                <div
+                    class="absolute left-1/2 -bottom-10 md:bottom-0 md:left-[770px] transform -translate-x-1/2 flex gap-3">
+                    <button
+                        class="w-8 h-8 bg-[#FFF8EF] text-[#5C3A00] rounded-md shadow hover:bg-[#5C3A00] hover:text-white transition">
+                        ‹
+                    </button>
+                    <button class="w-8 h-8 bg-[#5C3A00] text-white rounded-md shadow hover:bg-yellow-800 transition">
+                        ›
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Marquee Heading -->
+        <section class="overflow-hidden py-4">
+            <div class="whitespace-nowrap flex animate-marquee space-x-12">
+                <p class="text-[30px] font-extrabold text-white stroke-black stroke-[1px] tracking-wide uppercase ">
+                    United Notes of Fragrances 100% Natural Care Products United Notes of Fragrances 100% Natural Care
+                    Products 100% Natural Care Products United Notes of Fragrances
+                </p>
+            </div>
+            <div class="whitespace-nowrap flex animate-marquee space-x-12">
+                <p class="text-[30px] font-extrabold text-black tracking-wide uppercase ">
+                    United Notes of Fragrances 100% Natural Care Products United Notes of Fragrances 100% Natural Care
+                    Products United Notes of Fragrances 100% Natural Care
+                    Products
+                </p>
+            </div>
+        </section>
+        <!-- Our Fragrance Journey Section -->
+        <section class="bg-[#FDF9EA] py-12 md:py-20 relative overflow-hidden">
+            <img src="img/BG image.png" alt="Background Texture"
+                class="absolute top-0 left-0 w-[100vw] h-[90vh] md:w-[75vw] md:h-[90vh] md:-top-[50px] object-cover z-0 pointer-events-none " />
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+
+
+                <!-- Left: Text Content -->
+                <div class="space-y-6 relative z-10">
+
+                    <!-- Overlay for readability -->
+                    <div class="absolute top-0 left-0 w-full h-[70vh] z-0"></div>
+
+                    <!-- Foreground Text Content -->
+                    <p class="uppercase text-sm tracking-[4px] font-semibold text-[#A3632D] relative z-10">
+                        Our Fragrance Journey
+                    </p>
+
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-[#1D1D1D] leading-tight relative z-10">
+                        Crafting Scents with Passion and Precision
+                    </h2>
+
+                    <p class="text-gray-600 max-w-xl relative z-10">
+                        United Notes of Fragrances is more than just a perfume store. It’s a bridge between the rich
+                        scent
+                        traditions of the Middle East and the refined tastes of modern fragrance lovers in the UK.
+                        Founded by a
+                        UK-based Indian entrepreneur with a deep passion for authentic luxury, we specialize in curating
+                        100%
+                        original perfumes sourced directly from trusted distributors in Dubai — the heart of Arabian
+                        fragrance
+                        heritage.
+                    </p>
+
+                    <a href="#"
+                        class="inline-block px-6 py-3 bg-[#5C3A00] text-white text-sm font-semibold rounded-md hover:bg-yellow-800 transition relative z-10">
+                        Discover Now →
+                    </a>
+                </div>
+
+                <!-- Right: Image Layout -->
+                <div class="relative flex justify-center md:justify-center items-center w-full h-full">
+                    <!-- Main BG Image -->
+                    <img src="img/image 31.png" alt="Model"
+                        class="rounded-xl w-full h-auto md:w-[500px] md:h-[400px] object-cover z-10" />
+
+                    <!-- Foreground Center Bottle -->
+                    <img src="img/image 30.png" alt="Perfume Bottle"
+                        class="absolute hidden md:block md:w-[170px] md:top-[200px] md:right-[380px] transform -translate-x-1/2 -translate-y-1/2 z-20 rounded-xl hover:scale-105 transition" />
+
+                    <!-- Corner Image Bottom Right -->
+                    <img src="img/image 32.png" alt="Background Flower"
+                        class="absolute bottom-[-30px] right-[-30px] w-[100px] md:w-[70px] z-0 pointer-events-none opacity-70" />
+                </div>
+            </div>
+        </section>
+        <!-- Best-seller -->
+        <section class="w-full bg-[#FDF9EA] px-8 md:px-16 md:gap-2 py-16">
+            <!-- Top Row -->
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mb-10 gap-4">
+                <div>
+                    <p class="text-sm tracking-widest text-[#5C3A00] uppercase">Best-seller</p>
+                    <h2 class="text-2xl md:text-4xl font-bold text-[#1D1D1D]">Unmissable Savings on Top Scents</h2>
+                </div>
+                <a href="#"
+                    class="px-6 py-2 bg-[#5C3A00] text-white rounded-md text-sm font-semibold hover:bg-yellow-800 transition">
+                    View All →
+                </a>
+            </div>
+            <hr class="w-full md:w-[1200px] mx-auto border-t border-[#5C3A00] my-8 " />
+            <!-- Bottom Product Grid -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 items-start relative">
+
+                <!-- Product 1 -->
+                <div
+                    class="bg-[#FDFAF0] rounded-xl p-4 flex flex-col items-center text-center space-y-3 shadow-sm relative border border-transparent hover:border-[#3F2C14] transition-all duration-300">
+                    <img src="img/image 33.png" alt="Lattafa Eclaire" class="h-40 object-contain" />
+                    <img src="img/Objects.png" alt="" class="h-12 absolute -top-[13px] left-[0px]">
+                    <img src="img/image 24.png" alt="Lattafa Al Jawhara"
+                        class="h-10 absolute top-[140px] left-[45px]" />
+                    <img src="img/image 25.png" alt="Lattafa Al Jawhara"
+                        class="h-10 absolute top-[140px] right-[45px]" />
+                    <h3 class="text-md font-bold text-[#1D1D1D]">Lattafa Khanjar EDP Niche Emarati</h3>
+                    <p class="text-[#5C3A00] font-semibold">£69.99</p>
+                    <a href="#"
+                        class="px-4 py-2 bg-[#5C3A00] text-white rounded-md text-sm font-semibold hover:bg-yellow-800 transition">
+                        Buy Now →
+                    </a>
+
+                    <span class="absolute top-2 right-2 text-xl"><img src="img/Like BTN.png" alt=""></span>
+                </div>
+
+                <!-- Product 2 -->
+                <div
+                    class="bg-[#FDFAF0] rounded-xl p-4 flex flex-col items-center text-center space-y-3 shadow-sm relative border border-transparent hover:border-[#3F2C14] transition-all duration-300">
+                    <img src="img/image 34.png" alt="Lattafa Al Jawhara" class="h-40 object-contain" />
+                    <img src="img/Objects.png" alt="" class="h-12 absolute -top-[13px] left-[0px]">
+                    <img src="img/Group 4.png" alt="Lattafa Al Jawhara" class="h-10 absolute top-[140px] left-[45px]" />
+
+                    <h3 class="text-md font-bold text-[#1D1D1D]">Lattafa Yara Pink EDP</h3>
+                    <p class="text-[#5C3A00] font-semibold">£69.99</p>
+                    <a href="#"
+                        class="px-4 py-2 bg-[#5C3A00] text-white rounded-md text-sm font-semibold hover:bg-yellow-800 transition">
+                        Buy Now →
+                    </a>
+                    <span class="absolute top-2 right-2 text-xl"><img src="img/Like BTN.png" alt=""></span>
+
+                </div>
+
+                <!-- Product 3 -->
+                <div
+                    class="bg-[#FDFAF0] rounded-xl p-4 flex flex-col items-center text-center space-y-3 shadow-sm relative border border-transparent hover:border-[#3F2C14] transition-all duration-300">
+                    <img src="img/image 35.png" alt="Lattafa Ajwad" class="h-40 object-contain" />
+                    <img src="img/Objects.png" alt="" class="h-12 absolute -top-[13px] left-[0px]">
+                    <h3 class="text-md font-bold text-[#1D1D1D]">Lattafa Mayar</h3>
+                    <div class="space-x-2">
+                        <span class="line-through text-gray-400 text-sm">£32.99</span>
+                        <span class="text-[#5C3A00] font-semibold">£27.99</span>
+                    </div>
+                    <a href="#"
+                        class="px-4 py-2 bg-[#5C3A00] text-white rounded-md text-sm font-semibold hover:bg-yellow-800 transition">
+                        Buy Now →
+                    </a>
+                    <span class="absolute top-2 right-2 text-xl">
+                        <img src="img/Like BTN.png" alt="">
+                    </span>
+                </div>
+                <!-- Product 4 -->
+                <div
+                    class="bg-[#FDFAF0] rounded-xl p-4 flex flex-col items-center text-center space-y-3 shadow-sm relative border border-transparent hover:border-[#3F2C14] transition-all duration-300">
+                    <img src="img/image 36.png" alt="Lattafa Ajwad" class="h-40 object-contain" />
+                    <img src="img/Objects.png" alt="" class="h-12 absolute -top-[13px] left-[0px]">
+                    <h3 class="text-md font-bold text-[#1D1D1D]">Barakkat Satin Oud</h3>
+                    <div class="space-x-2">
+                        <span class="line-through text-gray-400 text-sm">£32.99</span>
+                        <span class="text-[#5C3A00] font-semibold">£27.99</span>
+                    </div>
+                    <a href="#"
+                        class="px-4 py-2 bg-[#5C3A00] text-white rounded-md text-sm font-semibold hover:bg-yellow-800 transition">
+                        Buy Now →
+                    </a>
+                    <span class="absolute top-2 right-2 text-xl">
+                        <img src="img/Like BTN.png" alt="">
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Summer Fragrance Fiesta -->
+        <section class="bg-[#FDF9EA] py-12 md:py-16 relative overflow-hidden">
+
+            <div
+                class="max-w-8xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-8 items-center relative z-10 min-h-[80vh] md:min-h-[0vh]">
+
+
+                <div class="md:col-span-1 self-end relative group">
+
+                    <img src="img/Leafs.png" alt="" class="animate-[float_6s_ease-in-out_infinite]">
+
+                    <img src="img/Vector (6).png" alt=""
+                        class="hidden md:block absolute md:-top-[300px] left-[220px] opacity-80 group-hover:opacity-100 transition-all duration-700 ease-out translate-y-4 group-hover:translate-y-0">
+                </div>
+
+                <div class="space-y-6 relative z-10 md:col-span-2 md:col-start-2 place-self-center text-center">
+
+                    <p class="uppercase text-sm tracking-[4px] font-semibold text-[#A3632D] relative z-10">
+                        Summer Fragrance Fiesta
+                    </p>
+
+                    <div class="relative group">
+                        <h2
+                            class="text-3xl md:text-4xl font-extrabold text-[#1D1D1D] leading-tight relative z-10 transition-all duration-500 ease-in-out group-hover:translate-y-1">
+                            Get Upto
+                            <span class="text-[#a6935d] font-black italic">25% Off</span>
+                            Summer Fragrances
+
+
+                            <img src="img/OBJECT.png" alt=""
+                                class="absolute hidden md:block md:-top-8 md:right-0 transition-all duration-500 ease-in-out group-hover:-top-12">
+                        </h2>
+                    </div>
+
+
+                    <p class="text-gray-600 max-w-xl relative z-10 mx-auto">
+                        Perfect for day or night, these scents will keep you feeling fresh and invigorated all summer
+                        long.
+                    </p>
+
+                    <a href="#"
+                        class="inline-block px-6 py-3 bg-[#5C3A00] text-white text-sm font-semibold rounded-md hover:bg-yellow-800 transition relative z-10">
+                        Shop Summer Scents ->
+                    </a>
+
+                    <p class="text-gray-600 max-w-xl relative z-10 mx-auto">
+                        Feel Fresh. Smell Divine. Save Big.
+                    </p>
+                </div>
+
+                <div class="relative flex justify-end items-end w-full h-full md:col-span-2 md:col-start-4">
+                    <img src="img/Product image.png" alt="Model"
+                        class="rounded-xl w-full h-auto md:w-[500px] md:h-[400px] object-cover z-10" />
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- review  -->
+        <section class="bg-[#FDF9EA] py-12 px-6 md:px-16">
+
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mb-10">
+
+                <div class="text-left space-y-2">
+                    <p class="uppercase tracking-[5px] text-[#a6935d] font-semibold text-sm">Testimonials</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-[#1D1D1D]">Customer Reviews</h2>
+                </div>
+
+                <div class="hidden md:block md:flex gap-2 mt-4 md:mt-0">
+                    <button
+                        class="w-8 h-8 rounded bg-[#EAE0C8] hover:bg-[#d2c29f] flex items-center justify-center text-[#1D1D1D]">
+                        &lt;
+                    </button>
+                    <button
+                        class="w-8 h-8 rounded bg-[#5C3A00] hover:bg-[#3f2900] text-white flex items-center justify-center">
+                        &gt;
+                    </button>
+                </div>
+            </div>
+            <hr class="w-full md:w-[1200px] mx-auto border-t border-[#5C3A00] my-8 " />
+
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-[#F5EDD8] p-6 rounded-xl shadow-sm space-y-4">
+                    <div class="flex gap-1 text-[#5C3A00]">
+                        <span>★ ★ ★ ★ ★</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#1D1D1D]">Luxury feel without the luxury price!</h3>
+                    <p class="text-[#333]">
+                        I ordered a Dubai-exclusive oud scent and was amazed by the packaging and fragrance quality.
+                        Feels like I’m wearing a designer perfume every day!
+                    </p>
+                    <hr class="border-t border-[#ddd]" />
+                    <p class="font-bold text-[#1D1D1D]">Ria S., London</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-[#F5EDD8] p-6 rounded-xl shadow-sm space-y-4">
+                    <div class="flex gap-1 text-[#5C3A00]">
+                        <span>★ ★ ★ ★ ★</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#1D1D1D]">Authentic and long-lasting.</h3>
+                    <p class="text-[#333]">
+                        Finally found a perfume that actually lasts all day! I’ve received so many compliments — will
+                        definitely be ordering again.
+                    </p>
+                    <hr class="border-t border-[#ddd]" />
+                    <p class="font-bold text-[#1D1D1D]">Imran P,Leicester</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-[#F5EDD8] p-6 rounded-xl shadow-sm space-y-4">
+                    <div class="flex gap-1 text-[#5C3A00]">
+                        <span>★ ★ ★ ★ ★</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#1D1D1D]">Gifting made easy.</h3>
+                    <p class="text-[#333]">
+                        Bought a perfume for my wife’s birthday and she loved it. The box arrived beautifully wrapped
+                        and on time. Great service!
+                    </p>
+                    <hr class="border-t border-[#ddd]" />
+                    <p class="font-bold text-[#1D1D1D]">Raj M,Birmingham</p>
+                </div>
+
+                <div class="flex gap-2 mt-4 md:mt-0 md:hidden">
+                    <button
+                        class="w-8 h-8 rounded bg-[#EAE0C8] hover:bg-[#d2c29f] flex items-center justify-center text-[#1D1D1D]">
+                        &lt;
+                    </button>
+                    <button
+                        class="w-8 h-8 rounded bg-[#5C3A00] hover:bg-[#3f2900] text-white flex items-center justify-center">
+                        &gt;
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- review  -->
+        <section class="bg-[#FDF9EA] py-12 px-6 md:px-16">
+
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mb-10">
+
+                <div class="text-left space-y-2">
+                    <p class="uppercase tracking-[5px] text-[#a6935d] font-semibold text-sm">Latest Insights</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-[#1D1D1D]">News & Blog Updates</h2>
+                </div>
+
+                <div class="hidden md:block md:flex gap-2 mt-4 md:mt-0">
+                    <button
+                        class="w-8 h-8 rounded bg-[#EAE0C8] hover:bg-[#d2c29f] flex items-center justify-center text-[#1D1D1D]">
+                        &lt;
+                    </button>
+                    <button
+                        class="w-8 h-8 rounded bg-[#5C3A00] hover:bg-[#3f2900] text-white flex items-center justify-center">
+                        &gt;
+                    </button>
+                </div>
+            </div>
+            <hr class="w-full md:w-[1200px] mx-auto border-t border-[#5C3A00] my-8 " />
+
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="relative group overflow-hidden rounded-xl shadow-sm">
+                    <img src="img/image 37.png" alt=""
+                        class="rounded-xl w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl flex flex-col justify-end p-6 text-white">
+                        <div class="text-sm text-gray-300 mb-1">July 01, 2025 · 0 Comments</div>
+                        <h3 class="text-lg font-semibold">Choosing the Right Oud: A Beginner’s Guide</h3>
+                        <a href="#" class="mt-2 inline-block text-sm underline font-medium hover:text-yellow-300">Read
+                            More →</a>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="relative group overflow-hidden rounded-xl shadow-sm">
+
+                    <img src="img/image 38.png" alt=""
+                        class="rounded-xl w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl flex flex-col justify-end p-6 text-white">
+                        <div class="text-sm text-gray-300 mb-1">May 15, 2025 · 4 Comments</div>
+                        <h3 class="text-lg font-semibold">How to Make Your Perfume Last All Day?</h3>
+                        <a href="#" class="mt-2 inline-block text-sm underline font-medium hover:text-yellow-300">Read
+                            More →</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="relative group overflow-hidden rounded-xl shadow-sm">
+
+                    <img src="img/image 39.png" alt=""
+                        class="rounded-xl w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl flex flex-col justify-end p-6 text-white">
+                        <div class="text-sm text-gray-300 mb-1">May 15, 2025 · 7 Comments</div>
+                        <h3 class="text-lg font-semibold">The Power of Fragrance in Gifting</h3>
+                        <a href="#" class="mt-2 inline-block text-sm underline font-medium hover:text-yellow-300">Read
+                            More →</a>
+                    </div>
+                </div>
+
+
+                <div class="flex gap-2 mt-4 justify-center  md:mt-0 md:hidden">
+                    <button
+                        class="w-8 h-8 rounded bg-[#EAE0C8] hover:bg-[#d2c29f] flex items-center justify-center text-[#1D1D1D]">
+                        &lt;
+                    </button>
+                    <button
+                        class="w-8 h-8 rounded bg-[#5C3A00] hover:bg-[#3f2900] text-white flex items-center justify-center">
+                        &gt;
+                    </button>
+
+                </div>
+
+            </div>
+            <div class="flex justify-center mt-4 md:mt-8">
+                <a href="#"
+                    class="min-w-[50px] px-6 py-3 bg-[#5C3A00] text-white text-sm font-semibold rounded-md hover:bg-yellow-800 transition relative z-10">
+                    Discover Now →
+                </a>
+            </div>
+        </section>
+        <!-- insta -->
+        <section class="py-10 px-4 bg-[#FDF9EA]">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4 max-w-7xl mx-auto">
+
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="img/image (4).png" alt="Product 2"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <img src="img/Group 1.png" alt="Instagram" class="w-10 h-10">
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="img/image (5).png" alt="Product 2"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <img src="img/Group 1.png" alt="Instagram" class="w-10 h-10">
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="img/image (11).png" alt="Product 2"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <img src="img/Group 1.png" alt="Instagram" class="w-10 h-10">
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="img/image (6).png" alt="Product 2"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <img src="img/Group 1.png" alt="Instagram" class="w-10 h-10">
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="img/image (7).png" alt="Product 2"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <img src="img/Group 1.png" alt="Instagram" class="w-10 h-10">
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="img/image (8).png" alt="Product 2"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <img src="img/Group 1.png" alt="Instagram" class="w-10 h-10">
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+
+    </main>
+    <footer class="bg-[#a67c37] text-white">
+        <!-- SECTION 1: Subscribe -->
+        <div class="max-w-7xl mx-auto px-6 py-10 text-center border-b border-dashed border-white/50">
+            <h2 class="text-2xl md:text-3xl font-bold mb-2">
+                Subscribe now and receive 10% off your first order!
+            </h2>
+            <p class="text-sm mb-6">
+                News & updates from United Notes of Fragrances. No spam, We promise.
+            </p>
+
+            <form class="max-w-xl mx-auto">
+                <!-- Bordered Wrapper -->
+                <div
+                    class="flex flex-col sm:flex-row rounded-xl border-[3px] sm:border-[5px] md:border-[10px] border-white overflow-hidden shadow-md">
+
+                    <!-- Input Field -->
+                    <input type="email" placeholder="Your email"
+                        class="w-full px-4 py-3 text-sm text-gray-700 placeholder:text-gray-500 bg-white focus:outline-none" />
+
+                    <!-- Button -->
+                    <button type="submit"
+                        class="bg-[#8B6429] text-white text-sm font-semibold px-6 py-3 hover:bg-[#704f20] transition-all w-full sm:w-auto">
+                        SUBSCRIBE →
+                    </button>
+
+                </div>
+            </form>
+        </div>
+
+
+        <!-- SECTION 2: Content Grid -->
+        <div
+            class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 border-b border-dashed border-white/50">
+
+            <!-- LEFT SIDE: Logo + Text -->
+            <div class="pl-6 md:pl-14">
+
+                <img src="img/LOGO (1).png" alt="Logo" class="w-24">
+                <p class="text-sm leading-relaxed">United Notes of Fragrances is your destination for timeless, original
+                    perfumes carefully curated and imported from the scent capital of the Middle East: Dubai.</p>
+                <hr class="border-t border-white/30">
+
+                <div class="flex gap-3 mt-2 items-center">
+                    <p class="font-bold text-white">Follow Us On:-</p>
+                    <a href="#"><img src="img/Border.png" alt="Instagram" class="w-8 h-8"></a>
+                    <a href="#"><img src="img/Border (1).png" alt="Instagram" class="w-8 h-8"></a>
+
+                </div>
+            </div>
+
+            <!-- CENTER: Brands -->
+            <div class="space-y-4 pr-6 md:pl-14">
+                <h3 class="text-lg font-bold mb-4">Brands</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:underline">› Niche</a></li>
+                    <li><a href="#" class="hover:underline">› Eaux de Parfum</a></li>
+                    <li><a href="#" class="hover:underline">› Perfumes & Colognes</a></li>
+                    <li><a href="#" class="hover:underline">› Ard Al Zaafaran</a></li>
+                    <li><a href="#" class="hover:underline">› Fragrance World</a></li>
+                    <li><a href="#" class="hover:underline">› Lattafa</a></li>
+                    <li><a href="#" class="hover:underline">› Maison Alhambra</a></li>
+                </ul>
+            </div>
+
+            <!-- CENTER-RIGHT: Categories -->
+            <div class="space-y-4 pr-6 md:pl-14">
+                <h3 class="text-lg font-bold mb-4">Categories</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:underline">› Mens</a></li>
+                    <li><a href="#" class="hover:underline">› Womens</a></li>
+                    <li><a href="#" class="hover:underline">› Unisex</a></li>
+                    <li><a href="#" class="hover:underline">› Kids</a></li>
+                </ul>
+            </div>
+
+            <!-- RIGHT: Useful Links -->
+            <div class="space-y-4 pr-6 md:pl-14">
+                <h3 class="text-lg font-bold mb-4">Useful Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:underline">› Home</a></li>
+                    <li><a href="#" class="hover:underline">› Shop</a></li>
+                    <li><a href="#" class="hover:underline">› Collections</a></li>
+                    <li><a href="#" class="hover:underline">› Blog</a></li>
+                    <li><a href="#" class="hover:underline">› Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Bottom Bar -->
+        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm">
+            <p class="mb-4 md:mb-0">© 2025 United Notes of Fragrances.com. All rights reserved.</p>
+            <div class="flex gap-4">
+                <img src="img/VISA.png" alt="Visa" class="w-10 h-auto">
+                <img src="img/Mastercard.png" alt="MasterCard" class="w-10 h-auto">
+                <img src="img/Paypal.png" alt="PayPal" class="w-10 h-auto">
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
